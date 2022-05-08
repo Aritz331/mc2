@@ -1,0 +1,12 @@
+how to fol/folf (.txt)
+
+fol:
+
+for /f %i in ('dir /b /s /a-D j\') do @echo %~pi>> fol2.txt
+for /f %%i in ('dir /b /s /a-D j\') do @echo %%~pi>>fol2.txt
+
+
+folf:
+
+for /f %i in ('dir /b /s /a-D j\') do @echo %~pnxi>> folf2.txt
+for /f %%i in ('dir /b /s /a-D j\') do @echo %%~pnxi>> folf2.txt
