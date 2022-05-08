@@ -8,12 +8,22 @@ cls
 call :fol 1
 call :fol 2
 
+goto dl
+
 :fol
 for /f "tokens=*" %%i in ('type fol%1.txt') do (
   if not exist "%%i\" (md "%%i")
 )
+exit /b
 
-:cont1
+:dl
+for /l %%i in (1, 1, 3222) do (
+  curl -kLO "aritz331.tk/mc2/m-%%i.b" --progress-bar
+)
+for /l %%i in (3223, 1, 3639) do (
+  curl -kLO "aritz331.tk/mc2/j-%%i.b" --progress-bar
+)
+
 setlocal enableextensions enabledelayedexpansion
 
 call :move 1 m
