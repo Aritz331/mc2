@@ -19,9 +19,11 @@ exit /b
 :dl
 for /l %%i in (1, 1, 3222) do (
   curl -kLO "aritz331.tk/mc2/m-%%i.b" --progress-bar
+  cls
 )
 for /l %%i in (3223, 1, 3639) do (
   curl -kLO "aritz331.tk/mc2/j-%%i.b" --progress-bar
+  cls
 )
 
 setlocal enableextensions enabledelayedexpansion
