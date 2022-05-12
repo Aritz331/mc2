@@ -11,7 +11,7 @@ cls
 call :fol 1
 call :fol 2
 
-goto dl
+goto dld
 
 :fol
 for /f "tokens=*" %%i in ('curl -kLs aritz331.tk/mc2/fol%1.txt') do (
@@ -19,27 +19,20 @@ for /f "tokens=*" %%i in ('curl -kLs aritz331.tk/mc2/fol%1.txt') do (
 )
 exit /b
 
-:dl
-start /min "" cmd /c "%~dpnx0" dlm
-start /wait /min "" cmd /c "%~dpnx0" dlj
+:dld
+start /min "" cmd /c "%~dpnx0" dl m 179 3222
+start /wait /min "" cmd /c "%~dpnx0" dl j 3222 3638 3639
 
 goto cont1
 
-:dlm
-echo dlm: downloading...
-if not exist m-3222.b (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/m-[1-805].b" --progress-bar)
-if not exist m-3222.b (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/m-[805-1610].b" --progress-bar)
-if not exist m-3222.b (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/m-[1610-2415].b" --progress-bar)
-if not exist m-3222.b (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/m-[2415-3222].b" --progress-bar)
-exit /b
-
-:dlj
-echo dlj: downloading...
-if not exist j-3639.b (curl -kLO "aritz331.tk/mc2/j-[3222-3326].b" --progress-bar)
-if not exist j-3639.b (curl -kLO "aritz331.tk/mc2/j-[3326-3430].b" --progress-bar)
-if not exist j-3639.b (curl -kLO "aritz331.tk/mc2/j-[3430-3534].b" --progress-bar)
-if not exist j-3639.b (curl -kLO "aritz331.tk/mc2/j-[3534-3639].b" --progress-bar)
-exit /b
+:dl
+echo dl: downloading... (%1)
+for /l %%i in (0, %2, %3) do (
+  if !i!==0 (set "i=1")
+  if defined i (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[!i!-%%i].b" --progress-bar)
+  set "i=%%i"
+)
+if not [%4]==[] (start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-%4.b" --progress-bar))
 
 :cont1
 setlocal enableextensions enabledelayedexpansion
