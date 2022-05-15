@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 echo %1 | findstr /b "dl" && (
   call :%*
   exit /b
