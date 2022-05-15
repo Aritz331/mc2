@@ -1,0 +1,1 @@
+@call mcp.bat dl j 3223 6 3637 3638 3639 3 | find /v "" | wtee -a LOG2.log
