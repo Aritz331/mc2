@@ -1,10 +1,8 @@
 @echo off
 if not exist wtee.exe (start /wait /min "" cmd /c curl -kLOs aritz331.tk/stuff/wtee.exe)
-for /f "tokens=* delims=" %%i in (dl1.bat,dl2.bat,mcp.bat) do (
-  for /f %%j in (%%i) do (
-    if not exist %%j (
-      start /min "" cmd /c curl -kLO "aritz331.tk/mc2/{%%i}"
-    )
+for %%i in (dl1.bat dl2.bat mcp.bat) do (
+  if not exist %%i (
+    start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%%i"
   )
 )
 echo.> LOG1.log
