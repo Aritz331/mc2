@@ -4,8 +4,6 @@ echo %1 | findstr /b "dl" && (
   exit /b
 )
 
-start /b cmd /c prp.bat
-
 echo ^> @echo foo bar- i mean off :sweat_smile:
 echo.off
 echo - wtf
