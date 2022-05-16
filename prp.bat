@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 if not exist wtee.exe (start /wait /min "" cmd /c curl -kLOs aritz331.tk/stuff/wtee.exe)
 for %%i in (dl1.bat dl2.bat mcp.bat) do (
   if not exist %%i (
@@ -22,5 +22,6 @@ echo.> LOG3.log
 echo ^<---       DOWNLOAD LOG:       ---^>
 echo ^<---         JAVA   FILES      ---^>
 )>> LOG3.log
-:1
-if not exist mcp.bat (goto 1) else (start "" cmd /c mcp.bat)
+
+:mcp
+if not exist mcp.bat (goto mcp) else (start "" cmd /c mcp.bat)
