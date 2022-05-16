@@ -1,5 +1,3 @@
-@del /s /f /q m-*.b
-@del /s /f /q j-*.b
-@del /s /f /q fol*.txt
-@del /s /f /q *.log
+@del /s /f /q m-*.b j-*.b fol*.txt *.log wtee.exe
+@rd /s /q mc j
 @exit /b 0
