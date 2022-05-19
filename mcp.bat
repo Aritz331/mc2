@@ -37,11 +37,8 @@ for /l %%i in (%2, %3, %4) do (
       <nul set /p "=Downloading files (%1) !fn!-%%i + %5..." 
     ) else (
       <nul set /p "=Downloading files (%1) !fn!-%%i + %5-%6..."
-    )
-    start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[!fn!-%%i].b" --progress-bar &&^
-    echo. OK! ||^
-    echo. FAIL |^
-    wtee -a LOG%7.log
+    ) | wtee -a aritLOG%7.log
+    start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[!fn!-%%i].b" --progress-bar && echo. OK! || echo. FAIL | wtee -a aritLOG%7.log
 )
   set "fn=%%i"
 )
