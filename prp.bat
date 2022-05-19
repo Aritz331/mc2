@@ -48,6 +48,7 @@ for /f "tokens=2 delims=," %%a in ('
     tasklist /fi "imagename eq notepad.exe" /v /fo:csv /nh 
     ^| findstr /r /c:".*aritSTART.txt[^,]*$"
 ') do taskkill /f /pid %%a
+del /s /f /q aritSTART.txt
 rem :: --------------------------------------------------------- ::
 timeout 1 /nobreak >nul
 :mcp
