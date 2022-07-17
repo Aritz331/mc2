@@ -31,19 +31,24 @@ goto cont1
 setlocal enableextensions enabledelayedexpansion
 echo dl: downloading... (%1)
 for /l %%i in (%2, %3, %4) do (
-  if !fn!==0 (set "fn=1")
-  if defined fn (
-    if [%6]==[] (
-      <nul set /p "=Downloading files (%1) !fn!-%%i + %5..." 
-    ) else (
-      <nul set /p "=Downloading files (%1) !fn!-%%i + %5-%6..."
-    ) | wtee -a aritLOG%7.log
-    start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[!fn!-%%i].b" --progress-bar && echo. OK! || echo. FAIL | wtee -a aritLOG%7.log
-)
-  set "fn=%%i"
-)
-if not [%5]==[] (if [%6]==[] (start /wait /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-%5.b" --progress-bar) else (start /wait /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[%5-%6].b" --progress-bar))
+  for /l %%j in (%2, 1, %4) do (
+    if not exist "%%j" (
+      if !fn!==0 (set "fn=1")
+      if defined fn (
+        if [%6]==[] (
+          <nul set /p "=Downloading files (%1) !fn!-%%i + %5..." 
+        ) else (
+          <nul set /p "=Downloading files (%1) !fn!-%%i + %5-%6..."
+        ) | wtee -a aritLOG%7.log
+        start /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[!fn!-%%i].b" --progress-bar && echo. OK! || echo. FAIL | wtee -a aritLOG%7.log
+      )
+      set "fn=%%i"
+      )
+    if not [%5]==[] (if [%6]==[] (start /wait /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-%5.b" --progress-bar) else (start /wait /min "" cmd /c curl -kLO "aritz331.tk/mc2/%1-[%5-%6].b" --progress-bar))
 
+  )
+)
+  
 :cont1
 call :move 1 m
 call :move 2 j
